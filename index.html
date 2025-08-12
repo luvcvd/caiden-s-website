@@ -1,223 +1,203 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Caiden’s Commissions</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Caiden’s Commissions</title>
 
-  <!-- Google Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-    rel="stylesheet"
-  />
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CSS -->
-  <link href="/src/index.css" rel="stylesheet" />
+<style>
+  /* Reset */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #f8fafc;
+    color: #111827;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a {
+    text-decoration: none;
+  }
 
-  <style>
-    /* Reset and base */
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: 'Inter', sans-serif;
-      color: white;
-      background: #0f172a;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+  /* Container */
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
 
-    /* Animated liquid glass background */
-    body::before {
-      content: "";
-      position: fixed;
-      top: -20%;
-      left: -20%;
-      width: 140vw;
-      height: 140vh;
-      background:
-        radial-gradient(circle at 30% 30%, #06b6d4aa, transparent 40%),
-        radial-gradient(circle at 70% 70%, #3b82f6aa, transparent 50%),
-        radial-gradient(circle at 50% 50%, #2563ebbb, transparent 60%);
-      animation: bgmove 30s ease-in-out infinite alternate;
-      filter: blur(70px);
-      z-index: -1;
-      opacity: 0.55;
-    }
+  /* Header */
+  header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  header h1 {
+    font-weight: 700;
+    font-size: 3.25rem;
+    color: #111827;
+    margin-bottom: 0.5rem;
+  }
+  header p {
+    font-weight: 500;
+    font-size: 1.125rem;
+    color: #6b7280;
+  }
+  header .btn-primary {
+    margin-top: 1.75rem;
+    background: linear-gradient(90deg, #3b82f6, #2563eb);
+    color: white;
+    padding: 0.85rem 2.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+    transition: background 0.3s ease;
+    display: inline-block;
+    user-select: none;
+  }
+  header .btn-primary:hover {
+    background: linear-gradient(90deg, #2563eb, #3b82f6);
+  }
 
-    @keyframes bgmove {
-      0% {
-        transform: translate(0, 0) scale(1);
-      }
-      50% {
-        transform: translate(10%, 5%) scale(1.05);
-      }
-      100% {
-        transform: translate(0, 0) scale(1);
-      }
-    }
+  /* Glass card style */
+  .glass-card {
+    background: rgba(255 255 255 / 0.7);
+    border-radius: 1.25rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    backdrop-filter: saturate(180%) blur(15px);
+    -webkit-backdrop-filter: saturate(180%) blur(15px);
+    border: 1px solid rgba(209, 213, 219, 0.3);
+    padding: 2.5rem 2rem;
+    margin-bottom: 3rem;
+  }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 1rem 4rem;
-      display: flex;
-      flex-direction: column;
-      gap: 3rem;
-      min-height: 100vh;
-      box-sizing: border-box;
-    }
+  /* Section title */
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.75rem;
+    color: #1e293b;
+    user-select: none;
+  }
 
-    header {
-      text-align: center;
-      margin-bottom: 2rem;
-      user-select: none;
-    }
+  /* Features grid */
+  .features {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .feature-item {
+    flex: 1 1 250px;
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 5px 15px rgb(0 0 0 / 0.07);
+    transition: box-shadow 0.3s ease;
+    text-align: center;
+    user-select: none;
+  }
+  .feature-item:hover {
+    box-shadow: 0 12px 30px rgb(37 99 235 / 0.25);
+  }
+  .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #2563eb;
+  }
+  .feature-item h3 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+  }
+  .feature-item p {
+    font-weight: 400;
+    color: #4b5563;
+  }
 
-    header h1 {
-      font-weight: 800;
-      font-size: 3rem;
-      margin-bottom: 0.25rem;
-      color: #60a5fa;
-      /* no glow */
-    }
+  /* Steps (how it works) */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .step {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 5px 18px rgb(0 0 0 / 0.08);
+    padding: 1.75rem 2rem;
+    user-select: none;
+    transition: box-shadow 0.3s ease;
+  }
+  .step:hover {
+    box-shadow: 0 12px 30px rgb(37 99 235 / 0.25);
+  }
+  .step h3 {
+    margin: 0 0 0.6rem 0;
+    font-weight: 600;
+    color: #2563eb;
+  }
+  .step p {
+    margin: 0;
+    color: #4b5563;
+    font-weight: 400;
+  }
 
-    header p {
-      font-weight: 600;
-      font-size: 1.25rem;
-      color: rgba(255 255 255 / 0.7);
-      margin-bottom: 1rem;
-    }
+  /* Call to action */
+  .cta-section {
+    text-align: center;
+  }
+  .cta-section a {
+    background: #2563eb;
+    color: white;
+    padding: 1rem 3rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 1.125rem;
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+    display: inline-block;
+    user-select: none;
+    transition: background 0.3s ease;
+  }
+  .cta-section a:hover {
+    background: #3b82f6;
+    box-shadow: 0 12px 36px rgba(59, 130, 246, 0.55);
+  }
 
-    a.button-primary {
-      background-color: #2563eb;
-      color: white;
-      padding: 0.85rem 2.25rem;
-      font-weight: 700;
-      border-radius: 1rem;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.6);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
-    }
-    a.button-primary:hover {
-      background-color: #3b82f6;
-      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.7);
-    }
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 2rem 1rem 1rem;
+    font-size: 0.9rem;
+    color: #9ca3af;
+    user-select: none;
+  }
 
-    /* Glass card container for sections */
-    .glass-card {
-      background: rgba(255 255 255 / 0.1);
-      border-radius: 1.5rem;
-      border: 1px solid rgba(255 255 255 / 0.15);
-      box-shadow: 0 8px 32px rgba(0 0 0 / 0.2);
-      backdrop-filter: saturate(180%) blur(15px);
-      -webkit-backdrop-filter: saturate(180%) blur(15px);
-      padding: 2rem;
-      color: white;
-      max-width: 100%;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #2563eb;
-      margin-bottom: 1.5rem;
-      user-select: none;
-    }
-
-    /* Feature grid */
+  /* Responsive */
+  @media (max-width: 720px) {
     .features {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .feature-item {
-      flex: 1 1 250px;
-      background: rgba(255 255 255 / 0.05);
-      border-radius: 1rem;
-      padding: 1.5rem 1.75rem;
-      box-shadow: 0 4px 20px rgba(0 0 0 / 0.3);
-      transition: background-color 0.3s ease;
-      text-align: center;
-      user-select: none;
-    }
-    .feature-item:hover {
-      background: rgba(37 99 235 / 0.15);
-      box-shadow: 0 6px 24px rgba(37 99 235 / 0.4);
-    }
-
-    .feature-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #2563eb;
-    }
-
-    /* How it works steps */
-    .steps {
-      display: flex;
       flex-direction: column;
       gap: 1.5rem;
     }
+  }
+</style>
 
-    .step {
-      background: rgba(255 255 255 / 0.07);
-      border-radius: 1.25rem;
-      border: 1px solid rgba(255 255 255 / 0.12);
-      padding: 1.5rem 2rem;
-      box-shadow: 0 4px 20px rgba(0 0 0 / 0.25);
-      transition: background-color 0.3s ease;
-      user-select: none;
-    }
-    .step:hover {
-      background: rgba(37 99 235 / 0.1);
-      box-shadow: 0 6px 24px rgba(37 99 235 / 0.45);
-    }
-    .step h3 {
-      margin: 0 0 0.5rem 0;
-      font-weight: 700;
-      color: #60a5fa;
-    }
-    .step p {
-      margin: 0;
-      font-weight: 500;
-      color: rgba(255 255 255 / 0.8);
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 1rem 1rem;
-      font-size: 0.9rem;
-      color: rgba(255 255 255 / 0.4);
-      user-select: none;
-    }
-
-    @media (max-width: 720px) {
-      .features {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-    }
-  </style>
-
-  <!-- FontAwesome CDN for icons -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<!-- FontAwesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <div class="container">
     <header>
       <h1>Caiden’s Commissions</h1>
-      <p>Custom UI designs, quality commissions, and more. Join the server to get started!</p>
-      <a href="https://discord.gg/your-invite" target="_blank" class="button-primary" rel="noopener noreferrer">
-        Join Our Discord
-      </a>
+      <p>Your one-stop shop for custom UI designs and more. Quality work, transparent process.</p>
+      <a href="https://discord.gg/your-invite" target="_blank" class="btn-primary" rel="noopener noreferrer">Join Our Discord</a>
     </header>
 
     <section class="glass-card">
@@ -226,17 +206,17 @@
         <div class="feature-item">
           <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
           <h3>UI Design</h3>
-          <p>Clean, modern UI designs tailored to your needs.</p>
+          <p>Professional, modern UI designs tailored exactly to your needs.</p>
         </div>
         <div class="feature-item">
           <div class="feature-icon"><i class="fas fa-code"></i></div>
           <h3>Scripting</h3>
-          <p>Optional scripting support to bring your designs to life.</p>
+          <p>Optional scripting to bring your UI designs to life and functionality.</p>
         </div>
         <div class="feature-item">
-          <div class="feature-icon"><i class="fas fa-tags"></i></div>
+          <div class="feature-icon"><i class="fas fa-gift"></i></div>
           <h3>Discounts & Giveaways</h3>
-          <p>Exclusive discounts and exciting giveaways for community members.</p>
+          <p>Exclusive offers and giveaways for our community members.</p>
         </div>
       </div>
     </section>
@@ -245,27 +225,26 @@
       <h2 class="section-title">How It Works</h2>
       <div class="steps">
         <div class="step">
-          <h3>Step 1: Join the Discord Server</h3>
-          <p>Click the invite link above and become part of the community.</p>
+          <h3>1. Join the Discord Server</h3>
+          <p>Click the invite link above to join our active community and get support.</p>
         </div>
         <div class="step">
-          <h3>Step 2: Submit Your Commission Order</h3>
-          <p>Access your dashboard to fill out the order form with your details.</p>
+          <h3>2. Submit Your Commission Order</h3>
+          <p>Fill out your order details through your dashboard once logged in.</p>
         </div>
         <div class="step">
-          <h3>Step 3: Discuss Details in Your Ticket</h3>
-          <p>Once your order is submitted, a ticket is created for direct communication.</p>
+          <h3>3. Discuss Your Order</h3>
+          <p>A dedicated ticket will be created for direct communication about your order.</p>
         </div>
         <div class="step">
-          <h3>Step 4: Receive Updates & Delivery</h3>
-          <p>Stay informed about your commission’s status and enjoy your final product.</p>
+          <h3>4. Receive Updates & Delivery</h3>
+          <p>Get notified at every stage and enjoy your finished commission.</p>
         </div>
       </div>
     </section>
 
-    <section class="glass-card" style="text-align:center;">
-      <h2 class="section-title">Ready to get started?</h2>
-      <a href="/dashboard" class="button-primary">Go to Your Dashboard</a>
+    <section class="cta-section">
+      <a href="/dashboard">Go to Your Dashboard</a>
     </section>
 
     <footer>
