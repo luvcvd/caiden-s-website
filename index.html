@@ -5,34 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Caiden’s Commissions</title>
 
-    <!-- Preconnect for Google Fonts (Inter) -->
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Inter font -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Tailwind compiled CSS -->
+    <!-- Tailwind CSS -->
     <link href="/src/index.css" rel="stylesheet" />
 
     <style>
-      /* Global reset & smooth font */
-      body,
-      html {
+      /* Reset & base styles */
+      html,
+      body {
         margin: 0;
         padding: 0;
         height: 100%;
         background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        font-family: "Inter", sans-serif;
+        font-family: 'Inter', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
       }
 
-      /* Liquid glass container effect */
+      /* Liquid glass effect container */
       #root {
         min-height: 100vh;
         display: flex;
@@ -60,4 +58,98 @@
         border-radius: 1.5rem;
         border: 1px solid rgba(255 255 255 / 0.18);
         box-shadow: 0 8px 32px rgba(0 0 0 / 0.15);
-        backdr
+        backdrop-filter: saturate(180%) blur(25px);
+        -webkit-backdrop-filter: saturate(180%) blur(25px);
+        max-width: 480px;
+        width: 100%;
+        padding: 2rem 2.5rem;
+        color: white;
+      }
+
+      /* Headings */
+      h1 {
+        font-weight: 800;
+        font-size: 2.5rem;
+        margin-bottom: 0.25rem;
+        text-shadow: 0 0 8px rgba(6, 182, 212, 0.7);
+      }
+
+      p.subtitle {
+        font-weight: 600;
+        font-size: 1rem;
+        color: rgba(255 255 255 / 0.75);
+        margin-bottom: 1.5rem;
+        user-select: none;
+      }
+
+      /* Textarea */
+      textarea {
+        width: 100%;
+        background: rgba(255 255 255 / 0.08);
+        border-radius: 1rem;
+        border: 1px solid rgba(255 255 255 / 0.3);
+        color: white;
+        font-size: 1rem;
+        padding: 1rem 1.25rem;
+        resize: none;
+        transition: border-color 0.3s ease;
+      }
+      textarea::placeholder {
+        color: rgba(255 255 255 / 0.6);
+      }
+      textarea:focus {
+        outline: none;
+        border-color: #06b6d4;
+        background: rgba(255 255 255 / 0.15);
+        box-shadow: 0 0 8px #06b6d4aa;
+      }
+
+      /* Button */
+      button {
+        width: 100%;
+        background: #06b6d4;
+        border: none;
+        padding: 1rem 0;
+        margin-top: 1.5rem;
+        font-weight: 700;
+        font-size: 1.125rem;
+        border-radius: 1rem;
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 6px 18px rgba(6, 182, 212, 0.6);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      button:hover {
+        background: #0ea5e9;
+        box-shadow: 0 8px 24px rgba(14, 165, 233, 0.8);
+      }
+      button:focus {
+        outline: none;
+        box-shadow: 0 0 8px #0ea5e9;
+      }
+
+      /* Message */
+      .message {
+        margin-top: 1rem;
+        font-size: 1rem;
+        text-align: center;
+        color: #ade8f4;
+        user-select: none;
+      }
+
+      /* Responsive */
+      @media (max-width: 520px) {
+        .glass-card {
+          padding: 1.5rem 1.75rem;
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
