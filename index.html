@@ -3,11 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Caiden's Commissions</title>
+    <title>Caiden’s Commissions</title>
+
+    <!-- Preconnect for Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Inter font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind compiled CSS -->
     <link href="/src/index.css" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+
+    <style>
+      /* Global reset & smooth font */
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+      }
+
+      /* Liquid glass container effect */
+      #root {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1.5rem;
+        background:
+          radial-gradient(
+            circle at 30% 30%,
+            rgba(255 255 255 / 0.12),
+            transparent 70%
+          ),
+          radial-gradient(
+            circle at 70% 70%,
+            rgba(255 255 255 / 0.15),
+            transparent 50%
+          );
+        backdrop-filter: saturate(180%) blur(25px);
+        -webkit-backdrop-filter: saturate(180%) blur(25px);
+      }
+
+      /* Glass card */
+      .glass-card {
+        background: rgba(255 255 255 / 0.12);
+        border-radius: 1.5rem;
+        border: 1px solid rgba(255 255 255 / 0.18);
+        box-shadow: 0 8px 32px rgba(0 0 0 / 0.15);
+        backdr
