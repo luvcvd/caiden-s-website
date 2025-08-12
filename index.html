@@ -1,155 +1,192 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Caiden’s Commissions</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Caiden’s Commissions</title>
 
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+    rel="stylesheet"
+  />
 
-    <!-- Tailwind CSS -->
-    <link href="/src/index.css" rel="stylesheet" />
+  <!-- Tailwind CSS -->
+  <link href="/src/index.css" rel="stylesheet" />
 
-    <style>
-      /* Reset & base styles */
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        font-family: 'Inter', sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        overflow-x: hidden;
-      }
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: white;
+      overflow-x: hidden;
+    }
 
-      /* Liquid glass effect container */
-      #root {
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1.5rem;
-        background:
-          radial-gradient(
-            circle at 30% 30%,
-            rgba(255 255 255 / 0.12),
-            transparent 70%
-          ),
-          radial-gradient(
-            circle at 70% 70%,
-            rgba(255 255 255 / 0.15),
-            transparent 50%
-          );
-        backdrop-filter: saturate(180%) blur(25px);
-        -webkit-backdrop-filter: saturate(180%) blur(25px);
-      }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
 
-      /* Glass card */
-      .glass-card {
-        background: rgba(255 255 255 / 0.12);
-        border-radius: 1.5rem;
-        border: 1px solid rgba(255 255 255 / 0.18);
-        box-shadow: 0 8px 32px rgba(0 0 0 / 0.15);
-        backdrop-filter: saturate(180%) blur(25px);
-        -webkit-backdrop-filter: saturate(180%) blur(25px);
-        max-width: 480px;
-        width: 100%;
-        padding: 2rem 2.5rem;
-        color: white;
-      }
+    header {
+      padding: 1rem 0;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
 
-      /* Headings */
-      h1 {
-        font-weight: 800;
-        font-size: 2.5rem;
-        margin-bottom: 0.25rem;
-        text-shadow: 0 0 8px rgba(6, 182, 212, 0.7);
-      }
+    header h1 {
+      font-weight: 800;
+      font-size: 3rem;
+      text-shadow: 0 0 12px #06b6d4;
+    }
 
-      p.subtitle {
-        font-weight: 600;
-        font-size: 1rem;
-        color: rgba(255 255 255 / 0.75);
-        margin-bottom: 1.5rem;
-        user-select: none;
-      }
+    header p {
+      font-weight: 600;
+      font-size: 1.25rem;
+      margin-top: 0.5rem;
+      color: rgba(255 255 255 / 0.75);
+    }
 
-      /* Textarea */
-      textarea {
-        width: 100%;
-        background: rgba(255 255 255 / 0.08);
-        border-radius: 1rem;
-        border: 1px solid rgba(255 255 255 / 0.3);
-        color: white;
-        font-size: 1rem;
-        padding: 1rem 1.25rem;
-        resize: none;
-        transition: border-color 0.3s ease;
-      }
-      textarea::placeholder {
-        color: rgba(255 255 255 / 0.6);
-      }
-      textarea:focus {
-        outline: none;
-        border-color: #06b6d4;
-        background: rgba(255 255 255 / 0.15);
-        box-shadow: 0 0 8px #06b6d4aa;
-      }
+    .glass-card {
+      background: rgba(255 255 255 / 0.12);
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255 255 255 / 0.18);
+      box-shadow: 0 8px 32px rgba(0 0 0 / 0.15);
+      backdrop-filter: saturate(180%) blur(25px);
+      -webkit-backdrop-filter: saturate(180%) blur(25px);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      color: white;
+    }
 
-      /* Button */
-      button {
-        width: 100%;
-        background: #06b6d4;
-        border: none;
-        padding: 1rem 0;
-        margin-top: 1.5rem;
-        font-weight: 700;
-        font-size: 1.125rem;
-        border-radius: 1rem;
-        color: white;
-        cursor: pointer;
-        box-shadow: 0 6px 18px rgba(6, 182, 212, 0.6);
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      }
-      button:hover {
-        background: #0ea5e9;
-        box-shadow: 0 8px 24px rgba(14, 165, 233, 0.8);
-      }
-      button:focus {
-        outline: none;
-        box-shadow: 0 0 8px #0ea5e9;
-      }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #06b6d4;
+      text-shadow: 0 0 6px #06b6d4aa;
+    }
 
-      /* Message */
-      .message {
-        margin-top: 1rem;
-        font-size: 1rem;
-        text-align: center;
-        color: #ade8f4;
-        user-select: none;
+    .features {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .feature-item {
+      flex: 1 1 250px;
+      background: rgba(255 255 255 / 0.1);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0 0 0 / 0.2);
+      transition: background-color 0.3s ease;
+      text-align: center;
+    }
+    .feature-item:hover {
+      background: rgba(6 182 212 / 0.15);
+      box-shadow: 0 6px 18px rgba(6 182 212 / 0.3);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #06b6d4;
+    }
+
+    a.button-primary {
+      display: inline-block;
+      background: #06b6d4;
+      color: white;
+      padding: 0.75rem 2rem;
+      border-radius: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(6, 182, 212, 0.6);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 1rem;
+    }
+    a.button-primary:hover {
+      background: #0ea5e9;
+      box-shadow: 0 8px 24px rgba(14, 165, 233, 0.8);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+      color: rgba(255 255 255 / 0.5);
+      user-select: none;
+    }
+
+    @media (max-width: 720px) {
+      .features {
+        flex-direction: column;
       }
+    }
+  </style>
 
-      /* Responsive */
-      @media (max-width: 520px) {
-        .glass-card {
-          padding: 1.5rem 1.75rem;
-          max-width: 100%;
-        }
-      }
-    </style>
-  </head>
+  <!-- FontAwesome CDN for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
 
-  <body>
-    <div id="root"></div>
+<body>
+  <div class="container">
+    <header>
+      <h1>Caiden’s Commissions</h1>
+      <p>Custom UI designs, quality commissions, and more. Join the server to get started!</p>
+      <a href="https://discord.gg/your-invite" target="_blank" class="button-primary" rel="noopener noreferrer">
+        Join Our Discord
+      </a>
+    </header>
 
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+    <section class="glass-card">
+      <h2 class="section-title">What We Offer</h2>
+      <div class="features">
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
+          <h3>UI Design</h3>
+          <p>Clean, modern UI designs tailored to your needs.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-code"></i></div>
+          <h3>Scripting</h3>
+          <p>Optional scripting support to bring your designs to life.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-tags"></i></div>
+          <h3>Discounts & Giveaways</h3>
+          <p>Exclusive discounts and exciting giveaways for community members.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass-card">
+      <h2 class="section-title">How It Works</h2>
+      <ol>
+        <li>Join the Discord server using the link above.</li>
+        <li>Submit your commission order via the dashboard once logged in.</li>
+        <li>Discuss details with Caiden or the team in your ticket channel.</li>
+        <li>Receive status updates, pay, and get your commission delivered.</li>
+      </ol>
+    </section>
+
+    <section class="glass-card" style="text-align:center;">
+      <h2 class="section-title">Ready to get started?</h2>
+      <a href="/dashboard" class="button-primary">Go to Your Dashboard</a>
+    </section>
+
+    <footer>
+      &copy; 2025 Caiden’s Commissions. All rights reserved.
+    </footer>
+  </div>
+</body>
 </html>
